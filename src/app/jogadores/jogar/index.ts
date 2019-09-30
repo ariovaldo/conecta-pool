@@ -1,0 +1,1 @@
+export * from './jogar-jogadores.component';
