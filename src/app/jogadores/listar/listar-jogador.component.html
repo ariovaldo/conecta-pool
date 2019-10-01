@@ -50,14 +50,17 @@
 <p *ngIf="jogadores.length==0">Nenhum Jogador cadastrado.</p>
 
 <div *ngIf="jogadores.length>0" class="form-group text-center">
-        <a 
-            (click) = "shuffle()"
-            class="btn btn-success">
-            <span class="glyphicon glyphicon-random" aria-hidden="true"></span> 
-              shuffle
-        </a>
-        
-      
-    </div>
+
+    <form #shufle = "ngForm" (ngSubmit) = "onClickSubmit(shufle.value)" >
+        <div class="form-group text-center">
+            <label for="qtde">Qtde:</label>
+            <input type="text" class="form-control" id="qtde" name="qtde" placeholder = "qtde inicial" ngModel > 
+        </div>
+        <div class="form-group text-center">
+            <input type="submit" class="btn btn-success" value="shuffle">
+        </div>
+    </form>
+    
+</div>
 
 

@@ -56,15 +56,15 @@ export class JogadorService {
   //--------------------------------------------------------------------------------
 
 
-  shuffle(){
+  shuffle(qtde:number){
     let jogadores: Jogador[] = this.listarTodos();
     jogadores = jogadores.filter(jogador=>jogador.inativo != true);
-    jogadores = this.embaralhar(jogadores);
+    jogadores = this.embaralhar(jogadores, qtde);
     localStorage['jogadoresShuffle'] = JSON.stringify(jogadores);
     // return jogadores ? jogadores:[];
   }
 
-  embaralhar(jogadores:Jogador[]):Jogador[]{
+  embaralhar(jogadores:Jogador[], qtde:number):Jogador[]{
     for(let i = jogadores.length - 1; i > 0; i--){
       const j = Math.floor(Math.random() * i)
       const temp = jogadores[i]
@@ -75,7 +75,7 @@ export class JogadorService {
     for(let i = 0; i < jogadores.length; i++){
       let jogador = jogadores[i];
       jogador.id = i+1;
-      jogador.pontos = 0;
+      jogador.pontos = qtde * (-1);
       jogadores[i] = jogador;
     }
     return jogadores;
@@ -101,4 +101,16 @@ export class JogadorService {
     });
     localStorage['jogadoresShuffle'] = JSON.stringify(jogadores); 
   }
+
+  zerar(jogador:Jogador):void{
+    let jogadores:Jogador[] = this.listarTodosShuffle();
+    jogadores.forEach((obj, index, objs) =>{
+      if(jogador.id===obj.id){
+        jogador.pontos = 0;
+        objs[index] = jogador;
+      }
+    });
+    localStorage['jogadoresShuffle'] = JSON.stringify(jogadores); 
+  }
+
 }

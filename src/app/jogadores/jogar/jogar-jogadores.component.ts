@@ -31,6 +31,13 @@ export class JogarJogadoresComponent implements OnInit {
     this.jogadorService.pontuar(jogador, valor);
   }
 
+  zerar(jogador:Jogador){
+    if(confirm('Zerar os pontos do fera? '+ jogador.nome)){
+      this.jogadorService.zerar(jogador);
+      this.jogador = this.jogadorService.buscarPorIdShuffle(jogador.id);
+    }
+  }
+
   proximoJogador(id:number){
     id = id + 1;
     this.router.navigate(['/jogadores/jogar', id]);

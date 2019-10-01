@@ -11,7 +11,6 @@ import {JogadorService, Jogador} from '../shared';
 export class ShuffleJogadorComponent implements OnInit {
 
   jogadores:Jogador[];
-  pontoInicial:number;
 
   constructor(private jogadorService:JogadorService, private router:Router) { }
 

@@ -35,12 +35,12 @@
     </div>
     <div class="form-group text-center">
       <a [routerLink]="['/jogadores/shuffle']" class="btn btn-default">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> 
-        Voltar
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>Voltar
       </a>
-      <!-- <a [routerLink]="['/jogadores/jogar', (jogador.id + 1)]" class="btn btn-success"> -->
-      <a (click)="proximoJogador(jogador.id)" class="btn btn-success">
-        Próximo
+      <a (click)="zerar(jogador)" class="btn btn-danger">Zerar
+          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 
+        </a>
+      <a (click)="proximoJogador(jogador.id)" class="btn btn-success">Próximo
         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> 
       </a>
     </div>

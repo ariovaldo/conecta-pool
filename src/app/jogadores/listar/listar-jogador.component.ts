@@ -29,8 +29,16 @@ export class ListarJogadorComponent implements OnInit {
     return this.jogadorService.listarTodos();
   }
 
-  shuffle():void{
-    this.jogadorService.shuffle();
+  onClickSubmit(formData) {
+    let qtde = 0;
+    if (formData.qtde != ''){
+      qtde =+formData.qtde;
+    }
+    this.shuffle(qtde>0?qtde:qtde*(-1));
+  }
+
+  shuffle(qtde:number):void{
+    this.jogadorService.shuffle(qtde);
     this.router.navigate(["/jogadores/shuffle"]);
   }
 
