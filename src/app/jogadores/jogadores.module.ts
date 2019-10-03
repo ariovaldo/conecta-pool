@@ -9,6 +9,7 @@ import { CadastrarJogadorComponent } from './cadastrar';
 import { EditarJogadorComponent } from './editar';
 import { ShuffleJogadorComponent } from './shuffle';
 import { JogarJogadoresComponent } from './jogar';
+import { BolasComponent } from './bolas';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { JogarJogadoresComponent } from './jogar';
     EditarJogadorComponent, 
     JogadorInativoDirective,
     ShuffleJogadorComponent,
-    JogarJogadoresComponent
+    JogarJogadoresComponent,
+    BolasComponent
   ],
   imports: [
     CommonModule,

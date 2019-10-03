@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-
-import {Jogador, Bola} from './';
+import { Jogador } from './jogador.model';
+import { Bola } from './bola.model';
 
 @Injectable({
   providedIn: 'root'

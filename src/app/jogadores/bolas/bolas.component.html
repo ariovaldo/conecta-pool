@@ -1,0 +1,5 @@
+<p>bolas works!</p>
+
+<span *ngFor="let bola of bolas">
+     <button type="button" class="btn btn-default kz-btn" (click)="jogar(jogador, bola.valor)" [disabled]="!bola.ativo">{{bola.valor}}</button>
+ </span>

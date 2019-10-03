@@ -12,27 +12,27 @@ import { JogadorService, Jogador, Bola} from '../shared';
 export class JogarJogadoresComponent implements OnInit {
 
   jogador:Jogador;
-  bolas:Bola[];
+
 
   //referencia do formulario
   @ViewChild("formJogador", { static: true }) formJogador: NgForm;
 
   constructor(
-    private jogadorService:JogadorService, 
-    private router:Router, 
-    private route:ActivatedRoute 
+    private jogadorService:JogadorService,
+    private router:Router,
+    private route:ActivatedRoute
   ) { }
 
   ngOnInit() {
     const id = +this.route.snapshot.params['id'];
     this.jogador = this.jogadorService.buscarPorIdShuffle(id);
-    this.bolas = this.jogadorService.listarBolas()
+    // this.bolas = this.jogadorService.listarBolas()
   }
 
-  jogar(jogador:Jogador, valor: number):void{
-    this.jogadorService.pontuar(jogador, valor);
-    this.bolas = this.jogadorService.listarBolas()
-  }
+  // jogar(jogador:Jogador, valor: number):void{
+  //   this.jogadorService.pontuar(jogador, valor);
+  //   this.bolas = this.jogadorService.listarBolas()
+  // }
 
   zerar(jogador:Jogador){
     if(confirm('Zerar os pontos do fera? '+ jogador.nome)){
