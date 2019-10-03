@@ -153,12 +153,12 @@ export class JogadorService {
     return bolas ? JSON.parse(bolas):[];
   }
   
-  listarJogadas(jogador:Jogador):Bola[]{
-    let bolas = localStorage['bolas'];
-    bolas = bolas.filter(bola=>bola.jogador.id == jogador.id);
-    alert(bolas);
-    return bolas ? JSON.parse(bolas):[];
-  }
+  // listarJogadas(jogador:Jogador):Bola[]{
+  //   let bolas = localStorage['bolas'];
+  //   bolas = bolas.filter(bola=>bola.jogador === jogador);
+  //   alert(bolas);
+  //   return bolas ? JSON.parse(bolas):[];
+  // }
 
 
   inativarBola(valor:number, jogador:Jogador):void{

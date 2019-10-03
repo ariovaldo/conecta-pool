@@ -19,7 +19,7 @@ export class BolasComponent implements OnInit {
 
   ngOnInit() {
     this.bolas = this.jogadorService.listarBolas()
-    this.Jogadas = this.jogadorService.listarJogadas(this.jogador);
+    //this.Jogadas = this.jogadorService.listarJogadas(this.jogador);
     this.badPlay = false;
   }
 
@@ -27,7 +27,7 @@ export class BolasComponent implements OnInit {
   jogar(jogador:Jogador, valor: number, badPlay:boolean):void{
     this.jogadorService.pontuar(jogador, valor, badPlay);
     this.bolas = this.jogadorService.listarBolas()
-    this.Jogadas = this.jogadorService.listarJogadas(this.jogador);
+    //this.Jogadas = this.jogadorService.listarJogadas(this.jogador);
   }
 
 
