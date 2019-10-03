@@ -1,5 +1,29 @@
-<p>bolas works!</p>
 
-<span *ngFor="let bola of bolas">
-     <button type="button" class="btn btn-default kz-btn" (click)="jogar(jogador, bola.valor)" [disabled]="!bola.ativo">{{bola.valor}}</button>
- </span>
+<input 
+type="checkbox"
+[checked]="badPlay"
+(change)="alterarTipoJogada(badPlay)"> Negativo!?
+
+<br />
+
+<div class="row text-center">
+
+    <span *ngFor="let bola of bolas">
+        <button
+          type="button" 
+          class="btn btn-default kz-btn" 
+          (click)="jogar(jogador, bola.valor, badPlay)"  
+          [class.alert-danger]="!bola.ativo" 
+          [disabled]="!bola.ativo">{{bola.valor}}
+        </button>
+     </span>
+</div>
+
+
+
+
+<div class="container">
+  <div *ngFor="let bola of Jogadas" class="row" >
+    {{bola.valor}}
+  </div>
+</div>

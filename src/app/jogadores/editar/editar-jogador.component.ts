@@ -28,7 +28,7 @@ export class EditarJogadorComponent implements OnInit {
     this.jogador = this.jogadorService.buscarPorId(id);
   }
 
-  atualizar(jogador:Jogador):void{
+  atualizar():void{
     if(this.formJogador.form.valid){
       this.jogadorService.atualizar(this.jogador);
       this.router.navigate(["/jogadores"]);

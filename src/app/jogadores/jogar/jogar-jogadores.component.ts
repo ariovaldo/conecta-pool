@@ -12,7 +12,8 @@ import { JogadorService, Jogador, Bola} from '../shared';
 export class JogarJogadoresComponent implements OnInit {
 
   jogador:Jogador;
-
+  id:number;
+  qtdeJogadores:number;
 
   //referencia do formulario
   @ViewChild("formJogador", { static: true }) formJogador: NgForm;
@@ -21,18 +22,17 @@ export class JogarJogadoresComponent implements OnInit {
     private jogadorService:JogadorService,
     private router:Router,
     private route:ActivatedRoute
-  ) { }
-
-  ngOnInit() {
-    const id = +this.route.snapshot.params['id'];
-    this.jogador = this.jogadorService.buscarPorIdShuffle(id);
-    // this.bolas = this.jogadorService.listarBolas()
+  ) { 
+    route.params.subscribe(val=>{
+      this.id = +this.route.snapshot.params['id'];
+      this.jogador = this.jogadorService.buscarPorIdShuffle(this.id);
+    });    
   }
 
-  // jogar(jogador:Jogador, valor: number):void{
-  //   this.jogadorService.pontuar(jogador, valor);
-  //   this.bolas = this.jogadorService.listarBolas()
-  // }
+  ngOnInit() {
+    // this.id = +this.route.snapshot.params['id'];
+    // this.jogador = this.jogadorService.buscarPorIdShuffle(this.id);
+  }
 
   zerar(jogador:Jogador){
     if(confirm('Zerar os pontos do fera? '+ jogador.nome)){
@@ -41,10 +41,9 @@ export class JogarJogadoresComponent implements OnInit {
     }
   }
 
-  proximoJogador(id:number){
-    id = id + 1;
-    this.router.navigate(['/jogadores/jogar', id]);
-    window.location.reload();
+  proximoJogador(){
+    this.qtdeJogadores = ( this.qtdeJogadores) ?  this.qtdeJogadores : this.jogadorService.qtdeJogadores();
+    this.router.navigate(['/jogadores/jogar', (this.id % this.qtdeJogadores) + 1 ]);
   }
 
 }

@@ -52,7 +52,7 @@ export class JogadorService {
     localStorage['jogadores'] = JSON.stringify(jogadores); 
   }
 
-
+  
   //--------------------------------------------------------------------------------
 
 
@@ -92,11 +92,18 @@ export class JogadorService {
     return jogadores.find(jogador=> jogador.id === id);
   }
 
-  pontuar(jogador:Jogador, valor:number):void{
+  qtdeJogadores():number{
+    let jogadores = this.listarTodosShuffle();
+    return jogadores.length;
+  } 
+
+
+
+  pontuar(jogador:Jogador, valor:number, badPlay:boolean):void{
     let jogadores:Jogador[] = this.listarTodosShuffle();
     jogadores.forEach((obj, index, objs) =>{
       if(jogador.id===obj.id){
-        jogador.pontos = jogador.pontos + valor;
+        jogador.pontos = jogador.pontos + ((badPlay)? valor * -1 : valor );
         objs[index] = jogador;
       }
     });
@@ -146,6 +153,14 @@ export class JogadorService {
     return bolas ? JSON.parse(bolas):[];
   }
   
+  listarJogadas(jogador:Jogador):Bola[]{
+    let bolas = localStorage['bolas'];
+    bolas = bolas.filter(bola=>bola.jogador.id == jogador.id);
+    alert(bolas);
+    return bolas ? JSON.parse(bolas):[];
+  }
+
+
   inativarBola(valor:number, jogador:Jogador):void{
     const bolas:Bola[] = this.listarBolas();
     let bola:Bola = new Bola(valor,false,jogador);

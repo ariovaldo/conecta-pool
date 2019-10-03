@@ -1,9 +1,9 @@
-<h1>Cadastrar tarefa</h1>
+<h1>Cadastrar Jogador</h1>
 
 <div class="well">
   <form #formJogador = "ngForm" >
     <div class="form-group">
-      <label for="nome">Tarefa:</label>
+      <label for="nome">Jogador:</label>
       <input 
         type="text"
         class="form-control"
@@ -13,7 +13,7 @@
         name="nome"
         minlength="3" 
         required> 
-      <div  *ngIf="nome.errors && (name.dirty || name.touched)" class="alert alert-danger">
+      <div  *ngIf="nome.errors && (nome.dirty || nome.touched)" class="alert alert-danger">
         <div [hidden]="!nome.errors.required">
           Digite o nome do fera.
         </div>
@@ -35,7 +35,6 @@
         class="btn btn-success"
         [disabled] = "!formJogador.form.valid"
         value="Cadastrar">
-      
     </div>
   </form>
 </div>

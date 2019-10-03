@@ -1,45 +1,47 @@
-<h1>Jogar</h1>
 
-<div class="well">
-  <form #formJogador="ngForm">
-    <div class="form-group">
-      <h3>Jogador: {{jogador.nome}} </h3>
-      <br />
-      
-      <input type="checkbox"> Negativo
+<div class="container">
+  
+  <div class="well">
+        
+        <div class="row justify-content-md-center text-center">
+          <div class="col">
+            <h2>Jogador: {{jogador.nome | uppercase }}</h2>
+          </div>
+          <div class="col">
+            <h2>Pontos: {{jogador.pontos}}</h2>
+          </div>
+        </div>
 
         <br />
-        <label for="nome">Pontos : </label>
-
-        <br />
-
+        
         <app-bolas
           [jogador]="jogador">
         </app-bolas>
 
         <br />
-        
-        <h3>Pontos: {{jogador.pontos}} </h3>
-     
-    </div>
-    
-    <div class="form-group text-center">
 
-        <div class="btn-group" role="group" aria-label="Basic example">
+        <div class="container">
+          <div class="form-group text-center">
 
-          <a [routerLink]="['/jogadores/shuffle']" class="btn btn-default">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>Voltar
-          </a>
+            <div class="btn-group" role="group" aria-label="Basic example">
 
-          <a (click)="zerar(jogador)" class="btn btn-danger">Zerar
-            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 
-          </a>
+              <a [routerLink]="['/jogadores/shuffle']" class="btn btn-default">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>Voltar
+              </a>
 
-          <a (click)="proximoJogador(jogador.id)" class="btn btn-success">Próximo
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> 
-          </a>
+              <a (click)="zerar(jogador)" class="btn btn-danger">Zerar
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 
+              </a>
+
+              <a (click)="proximoJogador()" class="btn btn-success">Próximo
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> 
+              </a>
+
+            </div>
         </div>
-
-    </div>
-  </form>
+      </div>
+      
+  </div>
 </div>
+
+
