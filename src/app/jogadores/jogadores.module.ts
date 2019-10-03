@@ -10,6 +10,7 @@ import { EditarJogadorComponent } from './editar';
 import { ShuffleJogadorComponent } from './shuffle';
 import { JogarJogadoresComponent } from './jogar';
 
+
 @NgModule({
   declarations: [
     ListarJogadorComponent, 

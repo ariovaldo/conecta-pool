@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import {Jogador} from './';
+import {Jogador, Bola} from './';
 
 @Injectable({
   providedIn: 'root'
@@ -61,7 +61,7 @@ export class JogadorService {
     jogadores = jogadores.filter(jogador=>jogador.inativo != true);
     jogadores = this.embaralhar(jogadores, qtde);
     localStorage['jogadoresShuffle'] = JSON.stringify(jogadores);
-    // return jogadores ? jogadores:[];
+    this.iniciarBolas();
   }
 
   embaralhar(jogadores:Jogador[], qtde:number):Jogador[]{
@@ -76,6 +76,7 @@ export class JogadorService {
       let jogador = jogadores[i];
       jogador.id = i+1;
       jogador.pontos = qtde * (-1);
+	    jogador.pontoInicial = jogador.pontos;
       jogadores[i] = jogador;
     }
     return jogadores;
@@ -100,17 +101,61 @@ export class JogadorService {
       }
     });
     localStorage['jogadoresShuffle'] = JSON.stringify(jogadores); 
+    this.inativarBola(valor,jogador);
   }
 
   zerar(jogador:Jogador):void{
     let jogadores:Jogador[] = this.listarTodosShuffle();
     jogadores.forEach((obj, index, objs) =>{
       if(jogador.id===obj.id){
-        jogador.pontos = 0;
+        jogador.pontos = jogador.pontoInicial;
         objs[index] = jogador;
       }
     });
     localStorage['jogadoresShuffle'] = JSON.stringify(jogadores); 
+  }
+
+
+  //--------------------------------------------------------------------------------
+
+  iniciarBolas():void{
+
+    let bolas = [
+      new Bola(1,true, null),
+      new Bola(2,true, null),
+      new Bola(3,true, null),
+      new Bola(4,true, null),
+      new Bola(5,true, null),
+      new Bola(6,true, null),
+      new Bola(7,true, null),
+      new Bola(8,true, null),
+      new Bola(9,true, null),
+      new Bola(10,true, null),
+      new Bola(11,true, null),
+      new Bola(12,true, null),
+      new Bola(13,true, null),
+      new Bola(14,true, null),
+      new Bola(15,true, null)
+    ];
+    localStorage['bolas'] = JSON.stringify(bolas);
+  }
+
+
+  listarBolas():Bola[]{
+    let bolas = localStorage['bolas'];
+    return bolas ? JSON.parse(bolas):[];
+  }
+  
+  inativarBola(valor:number, jogador:Jogador):void{
+    const bolas:Bola[] = this.listarBolas();
+    let bola:Bola = new Bola(valor,false,jogador);
+
+    bolas.forEach((obj, index, objs) =>{
+      if(obj.valor===valor){
+        objs[index] = bola;
+      }
+    });
+    localStorage['bolas'] = JSON.stringify(bolas); 
   }
 
 }

@@ -9,7 +9,7 @@
             <th>Pontos</th>
             <th>Jogar</th>
         </tr>
-        <tr *ngFor="let jogador of jogadores">
+        <tr *ngFor="let jogador of jogadores"  [class.danger] = "(jogador.pontos <= 0)">
             <td>
                 {{jogador.id}}
             </td>

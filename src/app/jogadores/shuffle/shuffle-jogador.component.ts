@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import {JogadorService, Jogador} from '../shared';
+import {JogadorService, Jogador, Bola} from '../shared';
+import { allResolved } from 'q';
 
 @Component({
   selector: 'app-shuffle-jogador',
