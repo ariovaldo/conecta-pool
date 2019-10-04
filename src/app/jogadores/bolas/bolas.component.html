@@ -1,15 +1,13 @@
 <div class="row text-center">
-
     <input 
     type="checkbox"
     [checked]="badPlay"
-    (change)="alterarTipoJogada(badPlay)"> Negativo!?
-
-
+    (change)="alterarTipoJogada()"> Negativo!?
 </div>
 
-<div class="row text-center">
+<br />
 
+<div class="row text-center">
     <span *ngFor="let bola of bolas">
         <button
           type="button" 
@@ -22,10 +20,10 @@
 </div>
 
 
-
+<!-- <br />
 
 <div class="container">
   <div *ngFor="let bola of Jogadas" class="row" >
     {{bola.valor}}
   </div>
-</div>
+</div> -->

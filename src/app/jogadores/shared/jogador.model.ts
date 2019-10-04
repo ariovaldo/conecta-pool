@@ -4,6 +4,7 @@ export class Jogador{
         public nome?:string,
         public inativo?:boolean,
         public pontos?:number,
-		public pontoInicial?:number
+        public pontoInicial?:number,
+        public bolasMatadas?:string
     ){}
 }

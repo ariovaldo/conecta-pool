@@ -52,10 +52,10 @@ export class ListarJogadorComponent implements OnInit {
   }
 
   alterarStatus(jogador:Jogador):void{
-    if(confirm('Desabilitar o fera? '+ jogador.nome)){
+    // if(confirm('Desabilitar o fera? '+ jogador.nome)){
       this.jogadorService.alterarStatus(jogador.id);
       this.jogadores = this.listarTodos();
-    }
+    //}
   }
 
   

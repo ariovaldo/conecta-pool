@@ -34,6 +34,13 @@ export class JogarJogadoresComponent implements OnInit {
     // this.jogador = this.jogadorService.buscarPorIdShuffle(this.id);
   }
 
+  punir(jogador:Jogador){
+    if(confirm('O fera fez cagada? '+ jogador.nome)){
+      this.jogadorService.punir(jogador);
+      this.jogador = this.jogadorService.buscarPorIdShuffle(jogador.id);
+    }
+  }
+
   zerar(jogador:Jogador){
     if(confirm('Zerar os pontos do fera? '+ jogador.nome)){
       this.jogadorService.zerar(jogador);

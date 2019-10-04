@@ -76,6 +76,7 @@ export class JogadorService {
       let jogador = jogadores[i];
       jogador.id = i+1;
       jogador.pontos = qtde * (-1);
+      jogador.bolasMatadas = "";
 	    jogador.pontoInicial = jogador.pontos;
       jogadores[i] = jogador;
     }
@@ -104,12 +105,25 @@ export class JogadorService {
     jogadores.forEach((obj, index, objs) =>{
       if(jogador.id===obj.id){
         jogador.pontos = jogador.pontos + ((badPlay)? valor * -1 : valor );
+        jogador.bolasMatadas = jogador.bolasMatadas + " [ " + ((badPlay)? valor * -1 : valor) +" ] ";
         objs[index] = jogador;
       }
     });
     localStorage['jogadoresShuffle'] = JSON.stringify(jogadores); 
     this.inativarBola(valor,jogador);
   }
+
+  punir(jogador:Jogador):void{
+    let jogadores:Jogador[] = this.listarTodosShuffle();
+    jogadores.forEach((obj, index, objs) =>{
+      if(jogador.id===obj.id){
+        jogador.pontos = jogador.pontos - 5;
+        objs[index] = jogador;
+      }
+    });
+    localStorage['jogadoresShuffle'] = JSON.stringify(jogadores); 
+  }
+
 
   zerar(jogador:Jogador):void{
     let jogadores:Jogador[] = this.listarTodosShuffle();
