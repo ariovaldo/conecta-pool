@@ -113,6 +113,20 @@ export class JogadorService {
     this.inativarBola(valor,jogador);
   }
 
+  desfazerPontuar(jogador:Jogador, valor:number, badPlay:boolean):void{
+    let jogadores:Jogador[] = this.listarTodosShuffle();
+    jogadores.forEach((obj, index, objs) =>{
+      if(jogador.id===obj.id){
+        jogador.pontos = jogador.pontos + ((badPlay)? valor : valor * -1 );
+        let str = " [ " + ((badPlay)? valor * -1 : valor) +" ] ";
+        jogador.bolasMatadas = jogador.bolasMatadas.replace(str,"");
+        objs[index] = jogador;
+      }
+    });
+    localStorage['jogadoresShuffle'] = JSON.stringify(jogadores); 
+    this.desfazerInativarBola(valor);
+  }
+
   punir(jogador:Jogador):void{
     let jogadores:Jogador[] = this.listarTodosShuffle();
     jogadores.forEach((obj, index, objs) =>{
@@ -178,6 +192,18 @@ export class JogadorService {
   inativarBola(valor:number, jogador:Jogador):void{
     const bolas:Bola[] = this.listarBolas();
     let bola:Bola = new Bola(valor,false,jogador);
+
+    bolas.forEach((obj, index, objs) =>{
+      if(obj.valor===valor){
+        objs[index] = bola;
+      }
+    });
+    localStorage['bolas'] = JSON.stringify(bolas); 
+  }
+
+  desfazerInativarBola(valor:number):void{
+    const bolas:Bola[] = this.listarBolas();
+    let bola:Bola = new Bola(valor,true,null);
 
     bolas.forEach((obj, index, objs) =>{
       if(obj.valor===valor){
